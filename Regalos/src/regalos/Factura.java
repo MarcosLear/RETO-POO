@@ -18,11 +18,11 @@ public class Factura {
         this.codFactura = codFactura;
         this.montoTotal = montoTotal;
         this.fecha = fecha;
-    }
+    
 //Alumno alumno = new Alumno(codigo, nombre, modalidad);
 
-    Factura factura = new Factura(codFactura, montoTotal, fecha);
-    
+//    Factura factura = new Factura(codFactura, montoTotal, fecha);
+    }
     public String getCodFactura() {
         return codFactura;
     }
