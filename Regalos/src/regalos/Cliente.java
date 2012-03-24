@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 //public class Cliente extends Factura {
 public class Cliente{
-    private String dni;
-    private String nombre;
-    private String apellido;
-    private String tipoCliente;
+    protected String dni;
+    protected String nombre;
+    protected String apellido;
+    protected String tipoCliente;
     
     private ArrayList<Factura> dbFactura;
 
@@ -35,7 +35,60 @@ public class Cliente{
         dbFactura.add(objFactura);
     }
     
-
+    public double sumaMontos(){
+        double total = 0;
+        for (Factura factura : dbFactura)
+            total += factura.getMontoTotal();
+        return total;
+    }
+    
+    public double puntosClienteNormal(){
+        double total=0;
+        total=sumaMontos()/7;
+        return total;
+    }
+    
+    public double puntosClienteGold(){
+        double total=0;
+        if (sumaMontos()>1000){
+            total=sumaMontos()/5;
+        }
+        return total;
+    }
+    
+    public double millasClienteGold(){
+        double total=0;
+        total=sumaMontos()/10;
+        return total * 100;
+    }
+    
+    
+    public double puntosClientePlatinum(){
+        double total=0;
+        if (sumaMontos()>3000){
+            total=sumaMontos()/3;
+        }
+        return total;
+    }
+    
+    public double millasClientePlatinum(){
+        double total=0;
+        if (sumaMontos()>1000){
+            total=sumaMontos()/8;
+        }
+        return total * 200;
+    }
+    
+    public double descuentoClientePlatinum(){
+        double total=0;
+        double totaldescuento=0;
+        total=sumaMontos()/1000;
+        totaldescuento=total*0.1;
+        return totaldescuento;
+    }
+    
+    
+    
     public ArrayList<Factura> getValor(){
         //return dbFactura.get(1).getMontoTotal();
         return dbFactura;

@@ -86,6 +86,113 @@ public class FacturaTest {
         
     }    
     
+    @Test
+    public void puntosParaLosClientesNormales(){
+        int n = 0;
+        String dni = "44422807";
+        String nombre = "Marcos";
+        String apellido = "Levano";
+        String tipoCliente = "Normal";
+        
+        String codFactura="001-21312";
+        double montoTotal=700; 
+        String fecha = "03/03/2012";
+        Cliente cliente =  new Cliente(dni, nombre, apellido, tipoCliente) ;
+        cliente.registrarFactura(codFactura, montoTotal, fecha);
+        
+        double retornado=cliente.puntosClienteNormal();
+        Assert.assertEquals(100, retornado,1);
+    }
+    
+    @Test
+    public void puntosParaLosClientesGold(){
+        int n = 0;
+        String dni = "44422807";
+        String nombre = "Marcos";
+        String apellido = "Levano";
+        String tipoCliente = "Gold";
+        
+        String codFactura="001-21312";
+        double montoTotal=5000; 
+        String fecha = "03/03/2012";
+        Cliente cliente =  new Cliente(dni, nombre, apellido, tipoCliente) ;
+        cliente.registrarFactura(codFactura, montoTotal, fecha);
+        
+        double retornado=cliente.puntosClienteGold();
+        Assert.assertEquals(1000, retornado,1);
+    }
+    
+     @Test
+    public void puntosParaLosClientesPlatinum(){
+        int n = 0;
+        String dni = "44422807";
+        String nombre = "Marcos";
+        String apellido = "Levano";
+        String tipoCliente = "Platinum";
+        
+        String codFactura="001-21312";
+        double montoTotal=6000; 
+        String fecha = "03/03/2012";
+        Cliente cliente =  new Cliente(dni, nombre, apellido, tipoCliente) ;
+        cliente.registrarFactura(codFactura, montoTotal, fecha);
+        
+        double retornado=cliente.puntosClientePlatinum();
+        Assert.assertEquals(2000, retornado,1);
+    }
+     
+    @Test
+    public void millasParaClienteGold(){
+        int n = 0;
+        String dni = "44422807";
+        String nombre = "Marcos";
+        String apellido = "Levano";
+        String tipoCliente = "Gold";
+        
+        String codFactura="001-21312";
+        double montoTotal=1000; 
+        String fecha = "03/03/2012";
+        Cliente cliente =  new Cliente(dni, nombre, apellido, tipoCliente) ;
+        cliente.registrarFactura(codFactura, montoTotal, fecha);
+        
+        double retornado=cliente.millasClienteGold();
+        Assert.assertEquals(10000, retornado,1);
+    }
+         
+    @Test
+    public void millasParaClientePlatinum(){
+        int n = 0;
+        String dni = "44422807";
+        String nombre = "Marcos";
+        String apellido = "Levano";
+        String tipoCliente = "Gold";
+        
+        String codFactura="001-21312";
+        double montoTotal=2000; 
+        String fecha = "03/03/2012";
+        Cliente cliente =  new Cliente(dni, nombre, apellido, tipoCliente) ;
+        cliente.registrarFactura(codFactura, montoTotal, fecha);
+        
+        double retornado=cliente.millasClientePlatinum();
+        Assert.assertEquals(50000, retornado,1);
+    }         
+
+    @Test
+    public void descuentoParaClientePlatinum(){
+        int n = 0;
+        String dni = "44422807";
+        String nombre = "Marcos";
+        String apellido = "Levano";
+        String tipoCliente = "Gold";
+        
+        String codFactura="001-21312";
+        double montoTotal=1000; 
+        String fecha = "03/03/2012";
+        Cliente cliente =  new Cliente(dni, nombre, apellido, tipoCliente) ;
+        cliente.registrarFactura(codFactura, montoTotal, fecha);
+        
+        double retornado=cliente.descuentoClientePlatinum();
+        Assert.assertEquals(0.1, retornado,0);
+    }
 }
     
 
